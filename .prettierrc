@@ -1,0 +1,6 @@
+{
+    "tabWidth": 4,
+    "printWidth": 120,
+    "importOrder": ["^@/(.*)$", "^(src|public|components|lib|styles)/(.*)$", "^[./]"],
+    "importOrderSeparation": true
+}
