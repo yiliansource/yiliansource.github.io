@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaItchIo } from "react-icons/fa";
 
+import { breakpoints } from "lib/breakpoints";
+
 const socialIconMap = {
     github: <FaGithub />,
     itchio: <FaItchIo />,
@@ -13,8 +15,13 @@ export const FeaturedProject = ({ title, description, banner, keywords = [], soc
         <div
             css={{
                 position: "relative",
-
                 minHeight: 380,
+
+                "@media (max-width: 640px)": {
+                    background: "#092C46",
+                    padding: "12px 18px",
+                    borderRadius: 8,
+                },
             }}
         >
             <div
@@ -23,6 +30,10 @@ export const FeaturedProject = ({ title, description, banner, keywords = [], soc
                     top: 0,
                     left: alternate ? 0 : "unset",
                     right: alternate ? "unset" : 0,
+
+                    "@media (max-width: 640px)": {
+                        display: "none",
+                    },
                 }}
             >
                 <Image
@@ -43,8 +54,13 @@ export const FeaturedProject = ({ title, description, banner, keywords = [], soc
                     flexDirection: "column",
                     alignItems: alternate ? "flex-end" : "flex-start",
                     textAlign: alternate ? "right" : "left",
-                    padding: "46px 0",
+                    padding: "30px 0",
                     gap: 20,
+
+                    "@media (max-width: 640px)": {
+                        alignItems: "flex-start",
+                        textAlign: "left",
+                    },
                 }}
             >
                 <div css={{ marginBottom: 12 }}>
@@ -57,6 +73,12 @@ export const FeaturedProject = ({ title, description, banner, keywords = [], soc
                         padding: "18px 30px",
                         borderRadius: 8,
                         boxShadow: "0 2px 12px rgb(0, 0, 0, 0.25)",
+
+                        "@media (max-width: 640px)": {
+                            background: "none",
+                            boxShadow: "none",
+                            padding: 0,
+                        },
                     }}
                 >
                     <p
@@ -72,7 +94,8 @@ export const FeaturedProject = ({ title, description, banner, keywords = [], soc
                     css={{
                         display: "flex",
                         flexDirection: "row",
-                        gap: 20,
+                        flexWrap: "wrap",
+                        gap: "10px 20px",
 
                         fontFamily: "Fira Code, monospace",
                         fontSize: 14,
@@ -97,7 +120,9 @@ export const FeaturedProject = ({ title, description, banner, keywords = [], soc
                     {Object.entries(socials).map(([social, href]) => (
                         <span key={social}>
                             <Link href={href}>
-                                <a>{socialIconMap[social]}</a>
+                                <a target="_blank" rel="noopener noreferrer">
+                                    {socialIconMap[social]}
+                                </a>
                             </Link>
                         </span>
                     ))}

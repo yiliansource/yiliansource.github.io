@@ -2,9 +2,10 @@
 import Image from "next/image";
 import { AiOutlineMail } from "react-icons/ai";
 
-import { BlobShape, BlobAnchoredScene, BlobScene, BlobCircle } from "components/Blobs";
-import { SectionHeading } from "components/Utility";
+import { ArtworkGallery } from "components/ArtworkGallery";
+import { Section, SectionHeading } from "components/Utility";
 import { FeaturedProject } from "components/projects/FeaturedProject";
+import { breakpoints } from "lib/breakpoints";
 import InReactioVeritasBanner from "public/img/in-reactio-veritas.jpg";
 import PartyJsBanner from "public/img/party-js.png";
 import ProfilePicture from "public/img/portrait.jpg";
@@ -13,13 +14,18 @@ import TenaciousTanksBanner from "public/img/tenacious-tanks.png";
 export default function Home() {
     return (
         <>
-            <section css={{ marginTop: 140 }}>
-                <BlobAnchoredScene>
-                    <BlobCircle translate={[40, -60]} radius={8} />
-                </BlobAnchoredScene>
-
+            <Section id="home">
                 <p css={{ fontSize: 16, color: "#567288" }}>My name is</p>
-                <div css={{ fontSize: 64, fontWeight: 700, marginBottom: 30 }}>
+                <div
+                    css={{
+                        fontSize: 64,
+                        fontWeight: 700,
+                        marginBottom: 30,
+                        [breakpoints.mobile]: {
+                            fontSize: 48,
+                        },
+                    }}
+                >
                     <h1>Ian Hornik.</h1>
                     <h2 css={{ color: "#567288" }}>Developer by passion.</h2>
                 </div>
@@ -41,60 +47,46 @@ export default function Home() {
                         Vienna, Austria.
                     </p>
                 </div>
+            </Section>
 
-                <BlobAnchoredScene override={{ left: 0 }}>
-                    <BlobShape
-                        align="left"
-                        translate={[0, 300]}
-                        rotate={-22.24}
-                        scale={2}
-                        shape="M132.9 -171C146.9 -118.8 115.7 -59.4 115.3 -0.4C114.9 58.7 145.5 117.4 131.4 173.6C117.4 229.9 58.7 283.7 3.2 280.5C-52.3 277.3 -104.7 217.2 -120 160.9C-135.3 104.7 -113.7 52.3 -125 -11.3C-136.3 -75 -180.6 -149.9 -165.2 -202.1C-149.9 -254.2 -75 -283.6 -7.8 -275.8C59.4 -268.1 118.8 -223.1 132.9 -171"
-                    />
-                    <BlobCircle translate={[0, 10]} radius={20} />
-                </BlobAnchoredScene>
-            </section>
-
-            <section
-                id="about"
-                css={{
-                    marginTop: 300,
-                    paddingLeft: 150,
-                }}
-            >
-                <BlobAnchoredScene>
-                    <BlobCircle translate={[300, -150]} radius={8} />
-                </BlobAnchoredScene>
-
+            <Section id="about">
                 <SectionHeading>About me</SectionHeading>
                 <div
                     css={{
                         display: "flex",
                         flexDirection: "row",
                         gap: 32,
+                        [breakpoints.mobile]: {
+                            flexWrap: "wrap",
+                        },
                     }}
                 >
                     <div
                         css={{
+                            flexShrink: 1,
                             "p + p": {
                                 marginTop: 12,
                             },
                         }}
                     >
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget arcu amet condimentum eu sem
-                            nulla nunc. Vestibulum ultrices ac amet enim. Mi pellentesque sem praesent pulvinar tortor
-                            tellus sagittis sit tortor. Commodo est sed sed aliquet purus lorem sed pharetra.
+                            Before graduating from the HTL Spengergasse in Vienna, I mostly spent my time with game
+                            development, as this was the primary focus of my educational institution. During the final
+                            year and post-graduation I started to transition more and more into full-stack web
+                            development, fascinated by the endless possibility of applications, interfaces and creative
+                            design choices. This is currently my primary occupation of work, but may be prone to change
+                            in the future.
                         </p>
                         <p>
-                            Elementum morbi vel enim volutpat ultrices viverra tellus viverra. Mi posuere at pharetra
-                            amet amet, ut congue. Neque vulputate facilisis duis egestas vulputate tellus dictumst.
-                            Faucibus nam vitae nunc augue. Et placerat amet ut feugiat. Lectus augue tellus arcu at.
+                            I have been wanting to study Technical Mathematics for a while, so after finishing my civil
+                            service I immediatelly enrolled at the Technical University of Vienna.
                         </p>
                         <p>Here are a few technologies I&apos;ve been working with recently:</p>
                         <div
                             css={{
                                 display: "flex",
                                 flexDirection: "row",
+                                flexWrap: "wrap",
                                 marginTop: 10,
                                 ul: {
                                     margin: "0 auto 0 0",
@@ -120,7 +112,7 @@ export default function Home() {
                             </ul>
                         </div>
                     </div>
-                    <div css={{ flexGrow: 1 }}>
+                    <div css={{ margin: "0 auto" }}>
                         <Image
                             src={ProfilePicture}
                             alt="Portrait Image"
@@ -133,14 +125,9 @@ export default function Home() {
                         />
                     </div>
                 </div>
-            </section>
+            </Section>
 
-            <section
-                id="projects"
-                css={{
-                    marginTop: 300,
-                }}
-            >
+            <Section id="projects">
                 <SectionHeading>Proud Projects</SectionHeading>
 
                 <div
@@ -149,11 +136,15 @@ export default function Home() {
                         flexDirection: "column",
                         padding: "40px 0",
                         gap: 80,
+
+                        [breakpoints.mobile]: {
+                            gap: 12,
+                        },
                     }}
                 >
                     <FeaturedProject
                         title="party.js"
-                        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitasse aenean hac diam sapien sed risus etiam. Turpis egestas massa sed magna sapien gravida."
+                        description="A JavaScript library to brighten up your user's site experience with visual effects!"
                         banner={PartyJsBanner}
                         keywords={["TypeScript", "HTML", "Library"]}
                         socials={{
@@ -161,27 +152,24 @@ export default function Home() {
                         }}
                         alternate
                     />
-
                     <FeaturedProject
                         title="Tenacious Tanks"
-                        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitasse aenean hac diam sapien sed risus etiam. Turpis egestas massa sed magna sapien gravida."
+                        description="A free-to-play, local-multiplayer, fast-paced arena brawler, where up to 4 players challenge each other in head-to-head tactical combat! This was my graduation project."
                         banner={TenaciousTanksBanner}
                         keywords={["Unity3D", "C#", "Wwise", "Autodesk Maya", "Photoshop"]}
                         socials={{
-                            itchio: "/",
+                            itchio: "https://yilian.itch.io/tenacious-tanks",
                         }}
                     />
-
                     <FeaturedProject
                         title="In Reactio Veritas"
-                        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Habitasse aenean hac diam sapien sed risus etiam. Turpis egestas massa sed magna sapien gravida."
+                        description="Turning brain impulses into art was a creative project I worked on together with some friends, before exhibitioning it at the Prix Ars Electronica in the category u19-create your world."
                         banner={InReactioVeritasBanner}
                         keywords={["C++", "Node.js", "Art"]}
-                        socials={{}}
                         alternate
                     />
                 </div>
-            </section>
+            </Section>
 
             {/* <section
                 css={{
@@ -192,14 +180,21 @@ export default function Home() {
                 <div></div>
             </section> */}
 
+            <Section id="artworks">
+                <SectionHeading>Artworks</SectionHeading>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget arcu amet condimentum eu sem nulla
+                    nunc. Vestibulum ultrices ac amet enim. Mi pellentesque sem praesent pulvinar tortor tellus sagittis
+                    sit tortor. Commodo est sed sed aliquet purus lorem sed pharetra.
+                </p>
+                <div css={{ marginTop: 20 }}>
+                    <ArtworkGallery />
+                </div>
+            </Section>
+
             {/* TODO: Gallery! */}
 
-            <section
-                id="contact"
-                css={{
-                    marginTop: 300,
-                }}
-            >
+            <Section id="contact">
                 <div css={{ textAlign: "center" }}>
                     <h2 css={{ fontSize: 40, fontWeight: 700, marginBottom: 20 }}>Want to reach out?</h2>
                     <p css={{ marginBottom: 20 }}>
@@ -209,7 +204,7 @@ export default function Home() {
                         <AiOutlineMail />
                     </a>
                 </div>
-            </section>
+            </Section>
         </>
     );
 }

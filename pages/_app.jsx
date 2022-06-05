@@ -1,17 +1,21 @@
+import Head from "next/head";
 import "reset-css";
 
-import { BlobProvider } from "components/Blobs";
 import { Layout } from "components/Layout";
+import { ParticleBackground } from "components/ParticleBackground";
 import "styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
     return (
         <>
-            <BlobProvider>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-            </BlobProvider>
+            <Head>
+                <title>Ian Hornik</title>
+            </Head>
+
+            <ParticleBackground />
+            <Layout>
+                <Component {...pageProps} />
+            </Layout>
         </>
     );
 }
