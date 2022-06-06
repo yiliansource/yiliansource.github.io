@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaItchIo } from "react-icons/fa";
 
-import { breakpoints } from "lib/breakpoints";
-
 const socialIconMap = {
     github: <FaGithub />,
     itchio: <FaItchIo />,
@@ -13,16 +11,16 @@ const socialIconMap = {
 export const FeaturedProject = ({ title, description, banner, keywords = [], socials = {}, alternate = false }) => {
     return (
         <div
-            css={{
+            css={(theme) => ({
                 position: "relative",
                 minHeight: 380,
 
                 "@media (max-width: 640px)": {
-                    background: "#092C46",
+                    background: theme.colors.background.card,
                     padding: "12px 18px",
                     borderRadius: 8,
                 },
-            }}
+            })}
         >
             <div
                 css={{
@@ -68,8 +66,8 @@ export const FeaturedProject = ({ title, description, banner, keywords = [], soc
                     <h3 css={{ fontWeight: 700, fontSize: 40 }}>{title}</h3>
                 </div>
                 <div
-                    css={{
-                        background: "#092C46",
+                    css={(theme) => ({
+                        background: theme.colors.background.card,
                         padding: "18px 30px",
                         borderRadius: 8,
                         boxShadow: "0 2px 12px rgb(0, 0, 0, 0.25)",
@@ -79,19 +77,19 @@ export const FeaturedProject = ({ title, description, banner, keywords = [], soc
                             boxShadow: "none",
                             padding: 0,
                         },
-                    }}
+                    })}
                 >
                     <p
-                        css={{
-                            color: "#B8CFE0",
+                        css={(theme) => ({
+                            color: theme.colors.text.bodyPrimary,
                             maxWidth: 450,
-                        }}
+                        })}
                     >
                         {description}
                     </p>
                 </div>
                 <div
-                    css={{
+                    css={(theme) => ({
                         display: "flex",
                         flexDirection: "row",
                         flexWrap: "wrap",
@@ -99,23 +97,24 @@ export const FeaturedProject = ({ title, description, banner, keywords = [], soc
 
                         fontFamily: "Fira Code, monospace",
                         fontSize: 14,
-                        color: "#567288",
-                    }}
+                        color: theme.colors.text.bodySecondary,
+                    })}
                 >
                     {keywords.map((k) => (
                         <span key={k}>{k}</span>
                     ))}
                 </div>
                 <div
-                    css={{
+                    css={(theme) => ({
                         fontSize: 24,
                         a: {
-                            color: "#567288",
+                            color: theme.colors.text.bodySecondary,
+
                             "&:hover": {
-                                color: "inherit",
+                                color: theme.colors.text.bodyPrimary,
                             },
                         },
-                    }}
+                    })}
                 >
                     {Object.entries(socials).map(([social, href]) => (
                         <span key={social}>

@@ -5,7 +5,6 @@ import { AiOutlineMail } from "react-icons/ai";
 import { ArtworkGallery } from "components/ArtworkGallery";
 import { Section, SectionHeading } from "components/Utility";
 import { FeaturedProject } from "components/projects/FeaturedProject";
-import { breakpoints } from "lib/breakpoints";
 import InReactioVeritasBanner from "public/img/in-reactio-veritas.jpg";
 import PartyJsBanner from "public/img/party-js.png";
 import ProfilePicture from "public/img/portrait.jpg";
@@ -15,19 +14,19 @@ export default function Home() {
     return (
         <>
             <Section id="home">
-                <p css={{ fontSize: 16, color: "#567288" }}>My name is</p>
+                <p css={(theme) => ({ fontSize: 16, color: theme.colors.text.bodySecondary })}>My name is</p>
                 <div
-                    css={{
+                    css={(theme) => ({
                         fontSize: 64,
                         fontWeight: 700,
                         marginBottom: 30,
-                        [breakpoints.mobile]: {
+                        [theme.breakpoints.mobile]: {
                             fontSize: 48,
                         },
-                    }}
+                    })}
                 >
                     <h1>Ian Hornik.</h1>
-                    <h2 css={{ color: "#567288" }}>Developer by passion.</h2>
+                    <h2 css={(theme) => ({ color: theme.colors.text.bodySecondary })}>Developer by passion.</h2>
                 </div>
                 <div
                     css={{
@@ -52,14 +51,14 @@ export default function Home() {
             <Section id="about">
                 <SectionHeading>About me</SectionHeading>
                 <div
-                    css={{
+                    css={(theme) => ({
                         display: "flex",
                         flexDirection: "row",
                         gap: 32,
-                        [breakpoints.mobile]: {
+                        [theme.breakpoints.mobile]: {
                             flexWrap: "wrap",
                         },
-                    }}
+                    })}
                 >
                     <div
                         css={{
@@ -79,7 +78,7 @@ export default function Home() {
                         </p>
                         <p>
                             I have been wanting to study Technical Mathematics for a while, so after finishing my civil
-                            service I immediatelly enrolled at the Technical University of Vienna.
+                            service I immediately enrolled at the Technical University of Vienna.
                         </p>
                         <p>Here are a few technologies I&apos;ve been working with recently:</p>
                         <div
@@ -131,16 +130,16 @@ export default function Home() {
                 <SectionHeading>Proud Projects</SectionHeading>
 
                 <div
-                    css={{
+                    css={(theme) => ({
                         display: "flex",
                         flexDirection: "column",
                         padding: "40px 0",
                         gap: 80,
 
-                        [breakpoints.mobile]: {
+                        [theme.breakpoints.mobile]: {
                             gap: 12,
                         },
-                    }}
+                    })}
                 >
                     <FeaturedProject
                         title="party.js"
@@ -183,9 +182,8 @@ export default function Home() {
             <Section id="artworks">
                 <SectionHeading>Artworks</SectionHeading>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget arcu amet condimentum eu sem nulla
-                    nunc. Vestibulum ultrices ac amet enim. Mi pellentesque sem praesent pulvinar tortor tellus sagittis
-                    sit tortor. Commodo est sed sed aliquet purus lorem sed pharetra.
+                    Occasionally I create artworks, mostly 3D using Blender. Below you can find a collection of my
+                    proudest pieces.
                 </p>
                 <div css={{ marginTop: 20 }}>
                     <ArtworkGallery />
@@ -200,7 +198,10 @@ export default function Home() {
                     <p css={{ marginBottom: 20 }}>
                         Whether it&apos;s an inquiry or just to say Hello, <br /> my inbox is always open!
                     </p>
-                    <a href="mailto:yiliansource@gmail.com" css={{ fontSize: 32, color: "#567288" }}>
+                    <a
+                        href="mailto:yiliansource@gmail.com"
+                        css={(theme) => ({ fontSize: 32, color: theme.colors.text.bodySecondary })}
+                    >
                         <AiOutlineMail />
                     </a>
                 </div>

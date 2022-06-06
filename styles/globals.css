@@ -5,29 +5,8 @@ body {
 
     font-family: Noto Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
         Droid Sans, Helvetica Neue, sans-serif;
-
-    position: relative;
-    scroll-behavior: smooth;
-
-    background: #001220;
-    color: #b8cfe0;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
 }
 
 * {
     box-sizing: border-box;
-}
-
-h1,
-h2,
-h3 {
-    color: #d9e8f3;
-}
-
-p {
-    line-height: 1.6;
 }

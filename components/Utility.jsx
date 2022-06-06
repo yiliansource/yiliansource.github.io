@@ -2,19 +2,17 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 
-import { breakpoints } from "lib/breakpoints";
-
 export const Section = ({ children, ...props }) => {
     const scrollRef = useRef(null);
 
     return (
         <section
-            css={{
+            css={(theme) => ({
                 padding: "200px 0 50px",
-                [breakpoints.mobile]: {
+                [theme.breakpoints.mobile]: {
                     padding: "100px 0 50px",
                 },
-            }}
+            })}
             {...props}
         >
             <motion.div
