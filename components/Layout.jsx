@@ -104,9 +104,13 @@ const Header = () => {
                 </nav>
 
                 <div
-                    css={{
+                    css={(theme) => ({
                         margin: "auto 0 auto auto",
-                    }}
+
+                        [theme.breakpoints.desktop]: {
+                            display: "none",
+                        },
+                    })}
                 >
                     <div
                         onClick={() => setSidebarOpen(true)}
