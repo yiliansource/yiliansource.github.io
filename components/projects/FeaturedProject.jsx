@@ -19,6 +19,7 @@ export const FeaturedProject = ({ title, description, banner, keywords = [], soc
                     background: theme.colors.background.card,
                     padding: "12px 18px",
                     borderRadius: 8,
+                    minHeight: "unset",
                 },
             })}
         >
@@ -41,6 +42,7 @@ export const FeaturedProject = ({ title, description, banner, keywords = [], soc
                     width={580}
                     height={360}
                     quality={100}
+                    placeholder="blur"
                     css={{ borderRadius: 8 }}
                     draggable={false}
                 />

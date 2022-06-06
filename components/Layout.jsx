@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { MdMenu, MdClose } from "react-icons/md";
 
 const navigationItems = [
     ["About me", "/#about"],
@@ -11,6 +12,8 @@ const navigationItems = [
 ];
 
 const Header = () => {
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
+
     return (
         <header
             css={(theme) => ({
@@ -54,8 +57,8 @@ const Header = () => {
                                     width: 78,
 
                                     [theme.breakpoints.mobile]: {
-                                        height: 60,
-                                        width: 60,
+                                        height: 50,
+                                        width: 50,
                                     },
                                 })}
                             >
@@ -82,11 +85,19 @@ const Header = () => {
                     {navigationItems.map(([label, href], i) => (
                         <Link href={href} key={href} passHref>
                             <motion.a
-                                css={{ padding: 10 }}
+                                css={(theme) => ({
+                                    padding: 10,
+                                    color: theme.colors.text.bodySecondary,
+                                    transition: "color 0.2s",
+
+                                    "&:hover": {
+                                        color: theme.colors.text.bodyPrimary,
+                                    },
+                                })}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1, transition: { delay: (i + 1) * 0.2 } }}
                             >
-                                {label}
+                                <span>{label}</span>
                             </motion.a>
                         </Link>
                     ))}
@@ -96,7 +107,88 @@ const Header = () => {
                     css={{
                         margin: "auto 0 auto auto",
                     }}
-                ></div>
+                >
+                    <div
+                        onClick={() => setSidebarOpen(true)}
+                        css={{
+                            fontSize: 22,
+                            padding: 10,
+                        }}
+                    >
+                        <MdMenu />
+                    </div>
+                </div>
+
+                <motion.div
+                    css={(theme) => ({
+                        position: "fixed",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+
+                        [theme.breakpoints.desktop]: {
+                            display: "none",
+                        },
+                    })}
+                    animate={{
+                        background: isSidebarOpen ? "rgb(0, 0, 0, 0.6)" : "rgb(0, 0, 0, 0)",
+                        pointerEvents: isSidebarOpen ? "all" : "none",
+                    }}
+                    onClick={() => setSidebarOpen(false)}
+                >
+                    <motion.div
+                        css={(theme) => ({
+                            position: "fixed",
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            width: 200,
+                            padding: 18,
+                            display: "flex",
+                            flexDirection: "column",
+                            background: theme.colors.background.card,
+                        })}
+                        animate={{ translateX: isSidebarOpen ? 0 : 200 }}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div
+                            css={{
+                                margin: "0 0 0 auto",
+                                fontSize: 24,
+                            }}
+                            onClick={() => setSidebarOpen(false)}
+                        >
+                            <MdClose />
+                        </div>
+                        <nav
+                            css={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "flex-end",
+                                marginTop: 10,
+                            }}
+                        >
+                            {navigationItems.map(([label, href]) => (
+                                <Link href={href} key={href} passHref>
+                                    <a
+                                        css={(theme) => ({
+                                            padding: "8px 0",
+                                            color: theme.colors.text.bodySecondary,
+                                            transition: "color 0.2s",
+
+                                            "&:hover": {
+                                                color: theme.colors.text.bodyPrimary,
+                                            },
+                                        })}
+                                    >
+                                        <span>{label}</span>
+                                    </a>
+                                </Link>
+                            ))}
+                        </nav>
+                    </motion.div>
+                </motion.div>
             </div>
         </header>
     );
