@@ -42,8 +42,8 @@ export default function Home() {
                         game development and 3D art.
                     </p>
                     <p>
-                        I am currently doing my bachelors degree in Technical Mathematics at the Technical University of
-                        Vienna, Austria.
+                        I am currently doing my Bachelor&apos;s degree in Technical Mathematics at the Technical
+                        University of Vienna, Austria.
                     </p>
                 </div>
             </Section>
@@ -78,7 +78,7 @@ export default function Home() {
                         </p>
                         <p>
                             I have been wanting to study Technical Mathematics for a while, so after finishing my civil
-                            service I immediately enrolled at the Technical University of Vienna.
+                            service I enrolled at the Technical University of Vienna.
                         </p>
                         <p>Here are a few technologies I&apos;ve been working with recently:</p>
                         <div
@@ -103,9 +103,9 @@ export default function Home() {
                                 <li>Javascript/Typescript (ES6+)</li>
                                 <li>React</li>
                                 <li>Node.js</li>
-                                <li>Python</li>
                             </ul>
                             <ul>
+                                <li>Python</li>
                                 <li>Unity3D</li>
                                 <li>C++</li>
                             </ul>
@@ -189,8 +189,6 @@ export default function Home() {
                     <ArtworkGallery />
                 </div>
             </Section>
-
-            {/* TODO: Gallery! */}
 
             <Section id="contact">
                 <div css={{ textAlign: "center" }}>
